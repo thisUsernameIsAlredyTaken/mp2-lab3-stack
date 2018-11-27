@@ -147,6 +147,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\src\tdataroot.cpp" />
+    <ClCompile Include="tformula.cpp" />
+    <ClCompile Include="tstack.cpp" />
     <ClInclude Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\include\tdatacom.h" />
     <ClInclude Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\include\tdataroot.h" />
     <ClInclude Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\include\tformula.h" />

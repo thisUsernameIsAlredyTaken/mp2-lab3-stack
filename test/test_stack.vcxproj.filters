@@ -4,6 +4,9 @@
     <ClCompile Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\test\test_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\test\CMakeLists.txt" />

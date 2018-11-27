@@ -4,6 +4,12 @@
     <ClCompile Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\src\tdataroot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tformula.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tstack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\include\tdatacom.h">

@@ -31,3 +31,9 @@
 *.app
 
 .vs/*
+Win32/*
+lib/*
+main/*
+*.vcxproj*
+*.dir
+bin/*

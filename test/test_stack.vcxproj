@@ -171,6 +171,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\test\test_main.cpp" />
+    <ClCompile Include="tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\ZERO_CHECK.vcxproj">

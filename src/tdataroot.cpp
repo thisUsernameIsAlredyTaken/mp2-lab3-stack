@@ -23,6 +23,7 @@ TDataRoot::TDataRoot(int Size): TDataCom()
   {
     pMem = new TElem[MemSize];
     MemType = MEM_HOLDER;
+    TDataCom::SetRetCode(DataEmpty);
   }
 } /*-------------------------------------------------------------------------*/
 

@@ -15,6 +15,7 @@ void TStack::Put(const TData &Val)
   case DataFull:
   case DataNoMem:
   case DataErr:
+    TDataCom::SetRetCode(err);
     throw err;
   case DataEmpty:
   case DataOK:
@@ -35,6 +36,7 @@ TData TStack::Get()
   case DataEmpty:
   case DataNoMem:
   case DataErr:
+    TDataCom::SetRetCode(err);
     throw err;
   case DataFull:
   case DataOK:
@@ -55,6 +57,7 @@ TData TStack::TopElem()
   case DataErr:
   case DataEmpty:
   case DataNoMem:
+    TDataCom::SetRetCode(err);
     throw err;
   case DataOK:
   case DataFull:
@@ -72,12 +75,16 @@ void TStack::Print()
   switch (TDataCom::GetRetCode())
   {
   case DataErr:
+    TDataCom::SetRetCode(DataErr);
     std::cout << "DATA_ERROR";
     break;
   case DataNoMem:
+    TDataCom::SetRetCode(DataNoMem);
     std::cout << "DATA_NO_MEM";
     break;
   case DataEmpty:
+  case DataOK:
+  case DataFull:
     std::cout << "{ ";
     for (int i = 0; i < top; ++i)
       std::cout << TDataRoot::pMem[i] << "; ";

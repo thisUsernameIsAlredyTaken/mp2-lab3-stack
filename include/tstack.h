@@ -1,3 +1,6 @@
+#ifndef __STACK_H__
+#define __STACK_H__
+
 #include "tdataroot.h"
 
 class TStack :public TDataRoot
@@ -14,3 +17,5 @@ public:
 	int IsValid();
     void Print();
 };
+
+#endif

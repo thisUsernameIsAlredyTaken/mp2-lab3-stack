@@ -1,0 +1,6 @@
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/CMakeFiles/ALL_BUILD.dir
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/CMakeFiles/ZERO_CHECK.dir
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/src/CMakeFiles/stack.dir
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/samples/CMakeFiles/main.dir
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/gtest/CMakeFiles/gtest.dir
+C:/Users/ADM/Desktop/labs/mp2-lab3-stack/test/CMakeFiles/test_stack.dir

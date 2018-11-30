@@ -13,6 +13,7 @@ public:
   int FormulaChecker(int Brackets[], int Size);    // проверка корректности скобок
   int FormulaConverter();                          // преобразование в постфиксную форму
   double FormulaCalculator();                      // вычисление формулы
+  char* getpostfix() { return PostfixForm; }
 };
 
 #endif

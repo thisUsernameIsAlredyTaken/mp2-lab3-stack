@@ -6,13 +6,15 @@
 #include<vector>
 
 int op_prior(char);
+bool piece_of_number(char);
 
 TFormula::TFormula(char *form)
 {
   if (strlen(form) >= MaxLen)
     throw "buffer_overflow";
   strcpy(Formula, form);
-  PostfixForm[0] = 0;
+  for(int i = 0; i < MaxLen; ++i)
+    PostfixForm[i] = 0;
 }
 
 int TFormula::FormulaChecker(int Brackets[], int Size)
@@ -74,8 +76,11 @@ int TFormula::FormulaConverter()
       PostfixForm[index++] = ' ';
     if (prior == -1)
       PostfixForm[index++] = *pCh;
-    else if(prior == 0 || prior > st.TopElem() || st.IsEmpty())
+    else if (prior == 0 || st.IsEmpty())
       st.Put(*pCh);
+    else if (!st.IsEmpty())
+      if (prior > op_prior(st.TopElem()))
+        st.Put(*pCh);
     else if (*pCh == ')')
     {
       while (st.TopElem() != '(')
@@ -105,16 +110,14 @@ double TFormula::FormulaCalculator()
 
   do
   {
-    if (isdigit(*pCh))
+    if (piece_of_number(*pCh))
     {
       std::vector<char> tmpV;
       do
       {
-        if (!isdigit(*pCh) && *pCh != '.')
-          throw -2;
-
         tmpV.push_back(*pCh);
-      } while (*++pCh != ' ');
+      } while (piece_of_number(*++pCh));
+      --pCh;
 
       size_t s = tmpV.size();
       char *tmpC = new char[s + 1];
@@ -124,6 +127,7 @@ double TFormula::FormulaCalculator()
         tmpC[i] = tmpV[i];
 
       double d = atof(tmpC);
+      operands.Push(d);
 
       delete[] tmpC;
     }
@@ -182,4 +186,9 @@ int op_prior(char ch)
   default:
     return -1;
   }
+}
+
+bool piece_of_number(char ch)
+{
+  return isdigit(ch) || ch == '.';
 }

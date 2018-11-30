@@ -5,6 +5,8 @@
 //
 // Динамические структуры данных - тестирование стека
 
+#ifdef STACK
+
 #include <iostream>
 #include "tstack.h"
 
@@ -40,3 +42,30 @@ int main()
   }
   return 0;
 }
+
+
+#endif // STACK
+
+
+#ifndef STACK
+
+#include<iostream>
+#include"tformula.h"
+
+using namespace std;
+
+int main()
+{
+  char str[] = "(2+4)/(8-5)";
+  TFormula tf(str);
+
+  tf.FormulaConverter();
+
+
+  cout << tf.getpostfix() << endl << endl;
+  cout << tf.FormulaCalculator() << endl;
+
+  return 0;
+}
+
+#endif // !STACK

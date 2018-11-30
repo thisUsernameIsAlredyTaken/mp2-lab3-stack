@@ -23,10 +23,14 @@ public:
   }
   void Push(const T &val)
   {
+    if (IsFull())
+      throw - 1;
     pMem[top++] = val;
   }
   T Pop()
   {
+    if (IsEmpty())
+      throw - 1;
     return pMem[--top];
   }
   bool IsEmpty()

@@ -41,7 +41,7 @@ void TDataRoot::SetMem(void *p, int Size) // задание памяти
   MemType = MEM_RENTER;
   MemSize = Size;
   DataCount = 0;
-  TDataCom::SetRetCode(DataOK);
+  TDataCom::SetRetCode(DataEmpty);
 } /*-------------------------------------------------------------------------*/
 
 bool TDataRoot::IsEmpty(void) const // контроль пустоты СД

@@ -63,6 +63,10 @@ int TFormula::FormulaConverter()
   int index = 0;
   TStack st(MaxLen);
 
+  int brackets[MaxLen];
+  if (FormulaChecker(brackets, MaxLen) != 0)
+    return 0;
+
   do
   {
     int prior = op_prior(*pCh);
@@ -90,6 +94,8 @@ int TFormula::FormulaConverter()
 
   while (!st.IsEmpty())
     PostfixForm[index++] = st.Get();
+
+  return 1;
 }
 
 double TFormula::FormulaCalculator()

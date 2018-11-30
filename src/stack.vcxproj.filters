@@ -24,6 +24,9 @@
     <ClInclude Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\include\tstack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\templateStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\ADM\Desktop\labs\mp2-lab3-stack\src\CMakeLists.txt" />

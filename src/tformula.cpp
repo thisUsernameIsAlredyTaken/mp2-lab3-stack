@@ -7,6 +7,7 @@
 
 int op_prior(char);
 bool piece_of_number(char);
+bool must_operator_push(const TStack &, int);
 
 TFormula::TFormula(char *form)
 {
@@ -65,34 +66,35 @@ int TFormula::FormulaConverter()
   int index = 0;
   TStack st(MaxLen);
 
-  int brackets[MaxLen];
-  if (FormulaChecker(brackets, MaxLen) != 0)
+  int brackets[MaxLen * 2];
+  if (FormulaChecker(brackets, MaxLen * 2) != 0)
     return 0;
 
   do
   {
     int prior = op_prior(*pCh);
-    if (*pCh == '+' || *pCh == '-' || *pCh == '/' || *pCh == '*')
-      PostfixForm[index++] = ' ';
-    if (prior == -1)
-      PostfixForm[index++] = *pCh;
-    else if (prior == 0 || st.IsEmpty())
-      st.Put(*pCh);
-    else if (!st.IsEmpty())
-      if (prior > op_prior(st.TopElem()))
-        st.Put(*pCh);
-    else if (*pCh == ')')
+
+    if (prior == -2)
+      continue;       //если встречаем пробел в исходной строке - едем дальше
+
+    if (prior == 2 || prior == 3)
+      PostfixForm[index++] = ' ';    //разделяем операнды пробелом в выходной строке
+
+    if (*pCh == ')')          //обработка закрывающей скобки
     {
       while (st.TopElem() != '(')
-        PostfixForm[index++] = st.Get();
-      st.Get();
+        PostfixForm[index++] = st.Get();  //выписываем все операторы из стека до открывающей скобки
+      st.Get();        //выталкиваем саму скобку
     }
+    else if (prior == -1)
+      PostfixForm[index++] = *pCh;    //записываем операнд в выходную строку
+    else if (must_operator_push(st, prior))
+      st.Put(*pCh);                   //пушим оператор в стек
     else
     {
       while (op_prior(st.TopElem()) >= prior)
-      {
-        PostfixForm[index++] = st.Get();
-      }
+        PostfixForm[index++] = st.Get();     //достаем из стека операторы, пока приоритет больше либо равен текущему
+      st.Put(*pCh);
     }
 
   } while (*++pCh);
@@ -131,35 +133,32 @@ double TFormula::FormulaCalculator()
 
       delete[] tmpC;
     }
-    else if (*pCh == '+')
+    else
     {
       double op2 = operands.Pop();
       double op1 = operands.Pop();
 
-      operands.Push(op1 + op2);
-    }
-    else if (*pCh == '-')
-    {
-      double op2 = operands.Pop();
-      double op1 = operands.Pop();
+      double result;
 
-      operands.Push(op1 - op2);
-    }
-    else if (*pCh == '*')
-    {
-      double op2 = operands.Pop();
-      double op1 = operands.Pop();
+      switch (*pCh)
+      {
+      case '+':
+        result = op1 + op2;
+        break;
+      case '-':
+        result = op1 - op2;
+        break;
+      case '/':
+        result = op1 / op2;
+        break;
+      case '*':
+        result = op1 * op2;
+        break;
+      }
 
-      operands.Push(op1 * op2);
+      operands.Push(result);
     }
-    else if (*pCh == '/')
-    {
-      double op2 = operands.Pop();
-      double op1 = operands.Pop();
 
-      operands.Push(op1 / op2);
-    }
-    
   } while (*++pCh);
 
   return operands.Pop();
@@ -182,6 +181,7 @@ int op_prior(char ch)
   case '/':
     return 3;
   case ' ':
+  case '\t':
     return -2;
   default:
     return -1;
@@ -191,4 +191,14 @@ int op_prior(char ch)
 bool piece_of_number(char ch)
 {
   return isdigit(ch) || ch == '.';
+}
+
+bool must_operator_push(const TStack &st, int prior)
+{
+  if (st.IsEmpty() || prior == 0)
+    return true;
+  if (!st.IsEmpty())
+    if (op_prior(st.TopElem()) < prior)
+      return true;
+  return false;
 }

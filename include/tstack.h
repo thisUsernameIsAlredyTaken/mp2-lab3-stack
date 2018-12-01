@@ -12,7 +12,7 @@ public:
     ~TStack() {};
 	void Put(const TData &Val); 
 	TData Get();
-	virtual TData TopElem(); 
+	virtual TData TopElem() const; 
 
 	int IsValid();
     void Print();

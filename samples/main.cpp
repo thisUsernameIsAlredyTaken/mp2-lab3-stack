@@ -56,14 +56,23 @@ using namespace std;
 
 int main()
 {
-  char str[] = "(2+4)/(8-5)";
+  char str[] = "  (2+4 \t\t )  /  ( 7 + .999  -5.001)  ";
   TFormula tf(str);
 
-  tf.FormulaConverter();
+  try {
+    tf.FormulaConverter();
 
-
-  cout << tf.getpostfix() << endl << endl;
-  cout << tf.FormulaCalculator() << endl;
+    cout << tf.getpostfix() << endl << endl;
+    cout << tf.FormulaCalculator() << endl;
+  }
+  catch (char *e)
+  {
+    cerr << "\tERR:: " << e << endl << endl;
+  }
+  catch (int e)
+  {
+    cerr << "\tERR:: " << e << endl << endl;
+  }
 
   return 0;
 }

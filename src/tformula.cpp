@@ -112,6 +112,9 @@ double TFormula::FormulaCalculator()
 
   do
   {
+    if (op_prior(*pCh) == -2)
+      continue;
+
     if (piece_of_number(*pCh))
     {
       std::vector<char> tmpV;

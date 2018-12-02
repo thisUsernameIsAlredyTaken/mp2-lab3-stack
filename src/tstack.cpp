@@ -40,7 +40,7 @@ TData TStack::Get()
 
 TData TStack::TopElem() const
 {
-  if (TDataRoot::DataCount == 0)
+  if (TDataRoot::DataCount <= 0)
     throw DataEmpty;
   
   return TDataRoot::pMem[top - 1];

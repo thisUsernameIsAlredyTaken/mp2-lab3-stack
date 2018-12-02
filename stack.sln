@@ -1,5 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxproj", "{544BECFC-FDFB-380E-BAA9-5ADC5D665510}"
 	ProjectSection(ProjectDependencies) = postProject
 		{05BBD3D9-B0E9-3F7F-8B4F-AD281FD390ED} = {05BBD3D9-B0E9-3F7F-8B4F-AD281FD390ED}
@@ -10,8 +12,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ALL_BUILD", "ALL_BUILD.vcxp
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ZERO_CHECK", "ZERO_CHECK.vcxproj", "{05BBD3D9-B0E9-3F7F-8B4F-AD281FD390ED}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "gtest\gtest.vcxproj", "{8253CE6A-E53B-3F10-A0FE-667CBDA826F7}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -65,9 +65,10 @@ Global
 		{62145741-CB26-3A2C-9547-F8199E9111A1}.Release|Win32.ActiveCfg = Release|Win32
 		{62145741-CB26-3A2C-9547-F8199E9111A1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2671A1F1-AC49-3DC2-B49F-24B3E74AFDE6}
-	EndGlobalSection
-	GlobalSection(ExtensibilityAddIns) = postSolution
 	EndGlobalSection
 EndGlobal

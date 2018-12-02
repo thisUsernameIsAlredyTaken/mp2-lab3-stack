@@ -56,23 +56,23 @@ using namespace std;
 
 int main()
 {
-  char str[] = "  (2+4 \t\t )  /  ( 7 + .999  -5.001)  ";
+  char str[] = "956.83 + 568.274 - 978.4054 * 7.584 * 7.5945 / 0.4394 / 23.323";
   TFormula tf(str);
 
-  try {
+  //try {
     tf.FormulaConverter();
 
     cout << tf.getpostfix() << endl << endl;
     cout << tf.FormulaCalculator() << endl;
-  }
-  catch (char *e)
-  {
-    cerr << "\tERR:: " << e << endl << endl;
-  }
-  catch (int e)
-  {
-    cerr << "\tERR:: " << e << endl << endl;
-  }
+  //}
+  //catch (char *e)
+  //{
+  //  cerr << "\tERR:: " << e << endl << endl;
+  //}
+  //catch (int e)
+  //{
+  //  cerr << "\tERR:: " << e << endl << endl;
+  //}
 
   return 0;
 }

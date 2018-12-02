@@ -8,6 +8,7 @@
 int op_prior(char);
 bool piece_of_number(char);
 bool must_operator_push(const TStack &, int);
+bool must_operator_get(const TStack &, int);
 
 TFormula::TFormula(char *form)
 {
@@ -89,10 +90,12 @@ int TFormula::FormulaConverter()
     else if (prior == -1)
       PostfixForm[index++] = *pCh;    //записываем операнд в выходную строку
     else if (must_operator_push(st, prior))
+    {
       st.Put(*pCh);                   //пушим оператор в стек
+    }
     else
     {
-      while (op_prior(st.TopElem()) >= prior)
+      while (must_operator_get(st, prior))
         PostfixForm[index++] = st.Get();     //достаем из стека операторы, пока приоритет больше либо равен текущему
       st.Put(*pCh);
     }
@@ -203,5 +206,14 @@ bool must_operator_push(const TStack &st, int prior)
   if (!st.IsEmpty())
     if (op_prior(st.TopElem()) < prior)
       return true;
+  return false;
+}
+
+bool must_operator_get(const TStack &st, int prior)
+{
+  if (st.IsEmpty())
+    return false;
+  else if (op_prior(st.TopElem()) >= prior)
+    return true;
   return false;
 }
